@@ -11,18 +11,15 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 
-const RegistrationScreen = () => {
+const RegistrationScreen = ({
+  isShowKeyboard,
+  keyboardHide,
+  changeShowKeyboard,
+}) => {
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
-  const [isShowKeyboard, setIsShowKeyboard] = useState(false);
-  const keyboardHide = () => {
-    if (!isShowKeyboard) {
-      return;
-    }
-    Keyboard.dismiss();
-    setIsShowKeyboard(false);
-  };
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -43,7 +40,7 @@ const RegistrationScreen = () => {
             placeholder={"Логин"}
             lineHeight={1.18}
             onFocus={() => {
-              setIsShowKeyboard(true);
+              changeShowKeyboard(true);
             }}
           />
         </View>
@@ -53,7 +50,7 @@ const RegistrationScreen = () => {
             placeholder={"Адрес электронной почты"}
             lineHeight={1.18}
             onFocus={() => {
-              setIsShowKeyboard(true);
+              changeShowKeyboard(true);
             }}
           />
         </View>
@@ -64,7 +61,7 @@ const RegistrationScreen = () => {
             lineHeight={1.18}
             secureTextEntry={true}
             onFocus={() => {
-              setIsShowKeyboard(true);
+              changeShowKeyboard(true);
             }}
           />
         </View>
