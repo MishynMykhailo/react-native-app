@@ -26,6 +26,7 @@ const RegistrationScreen = () => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={{ flex: 1 }}
     >
       <View
         style={{
@@ -88,6 +89,8 @@ const RegistrationScreen = () => {
 
 const styles = StyleSheet.create({
   form: {
+    flex: 1,
+    justifyContent: "flex-end",
     marginHorizontal: 16,
     flexDirection: "column",
     marginBottom: 78,
