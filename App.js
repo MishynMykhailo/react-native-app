@@ -14,6 +14,7 @@ import RegistrationScreen from "./Screens/RegistrationScreen";
 export default function App() {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   console.log(isShowKeyboard);
+  
   const keyboardHide = () => {
     if (!isShowKeyboard) {
       return;
@@ -21,6 +22,7 @@ export default function App() {
     Keyboard.dismiss();
     setIsShowKeyboard(false);
   };
+
   return (
     <TouchableWithoutFeedback onPress={keyboardHide}>
       <View style={styles.container}>
