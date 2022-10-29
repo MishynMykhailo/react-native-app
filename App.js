@@ -14,7 +14,7 @@ import RegistrationScreen from "./Screens/RegistrationScreen";
 export default function App() {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   console.log(isShowKeyboard);
-  
+
   const keyboardHide = () => {
     if (!isShowKeyboard) {
       return;

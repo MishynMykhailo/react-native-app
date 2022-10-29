@@ -20,6 +20,15 @@ const RegistrationScreen = ({
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
 
+  const handleSubmit = () => {
+    setPassword("");
+    setUserName("");
+    setEmail("");
+    if (isShowKeyboard) {
+      changeShowKeyboard(false);
+      keyboardHide();
+    }
+  };
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -42,6 +51,8 @@ const RegistrationScreen = ({
             onFocus={() => {
               changeShowKeyboard(true);
             }}
+            value={userName}
+            onChangeText={(value) => setUserName(value)}
           />
         </View>
         <View style={{ marginTop: 16 }}>
@@ -52,6 +63,8 @@ const RegistrationScreen = ({
             onFocus={() => {
               changeShowKeyboard(true);
             }}
+            value={email}
+            onChangeText={(value) => setEmail(value)}
           />
         </View>
         <View style={{ marginTop: 16 }}>
@@ -63,13 +76,17 @@ const RegistrationScreen = ({
             onFocus={() => {
               changeShowKeyboard(true);
             }}
+            value={password}
+            onChangeText={(value) => setPassword(value)}
           />
         </View>
         <View style={{ marginTop: 43 }}>
           <TouchableOpacity
             style={styles.btn}
             activeOpacity={0.8}
-            onPress={keyboardHide}
+            onPress={() => {
+              keyboardHide, handleSubmit();
+            }}
           >
             <Text style={styles.btnText} lineHeight={1.18}>
               Зарегистрироваться
